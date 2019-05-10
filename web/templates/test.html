@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>文本框中输入文字，页面中div层同步获取文本框内容</title>
+<style>
+textarea{width:300px;height:150px; border:1px solid #CCC; font-size:12px; color:#000;}
+p{ padding-left:30px; text-indent:-30px;width:270px;height:250px; border:1px solid #900; margin-top:50px; font-size:12px; color:#F00; line-height:21px; overflow:hidden}
+</style>
+<script type="text/javascript">
+ function SwapTxt()
+  {
+      var txt = document.getElementById("eml").value;
+      document.getElementById("lyny").innerHTML=txt;
+  }
+</script>
+</head>
+<body>
+  <textarea name="" cols="" rows="" class="loe_hk10" id="eml" onkeyup="SwapTxt()"></textarea>
+  <p id="lyny">代码家园提示：请在上面的文本框中输入文字，如www.jb51.net</p>
+</body>
+</html>
