@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>A Better Fluid Responsive Table</title>
+      <style>
+      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+      table#miyazaki { 
+  margin: 0 auto;
+  border-collapse: collapse;
+  font-family: Agenda-Light, sans-serif;
+  font-weight: 100; 
+  background: #333; color: #fff;
+  text-rendering: optimizeLegibility;
+  border-radius: 5px; 
+}
+table#miyazaki caption { 
+  font-size: 2rem; color: #444;
+  margin: 1rem;
+  background-image: url(static/img/miyazaki.png), url(static/img/miyazaki2.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center left, center right; 
+}
+table#miyazaki thead th { font-weight: 600; }
+table#miyazaki thead th, table#miyazaki tbody td { 
+  padding: .8rem; font-size: 1.4rem;
+}
+table#miyazaki tbody td { 
+  padding: .8rem; font-size: 1.4rem;
+  color: #444; background: #eee; 
+}
+table#miyazaki tbody tr:not(:last-child) { 
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;  
+}
+
+@media screen and (max-width: 600px) {
+  table#miyazaki caption { background-image: none; }
+  table#miyazaki thead { display: none; }
+  table#miyazaki tbody td { 
+    display: block; padding: .6rem; 
+  }
+  table#miyazaki tbody tr td:first-child { 
+    background: #666; color: #fff; 
+  }
+	table#miyazaki tbody td:before { 
+    content: attr(data-th); 
+    font-weight: bold;
+    display: inline-block;
+    width: 6rem;  
+  }
+}
+    </style>
+
+    <script src="static/js/prefixfree.min.js"></script>
+
+</head>
+
+<body>
+
+<table id="miyazaki">
+<caption> Senitiment classfication history</caption>
+<thead>
+<tr><th>id<th>文本<th>喜<th>哀<th>怒<th>惧<th>惊<th>纠正<th>改
+<tbody id="results_db">
+
+</table>
+
+<script src='static/js/jquery.min.js'></script>
+<script  src="static/js/table.js"></script>
+
+<script type="text/javascript">
+  window.onload = dynamic_db({{ results_db|tojson }});
+  </script>
+
+</body>
+
+</html>
