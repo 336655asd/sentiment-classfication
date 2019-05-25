@@ -108,7 +108,8 @@ def retrain(epochs = 100):
     encode_y = gen_label(y)
     with graph.as_default():
         model_encode.fit(X,encode_y, epochs = epochs)
-        model_encode.save("model/encode.model")                      
+        model_encode.save("model/encode.model") 
+    sql.update_train()                     
     return
 
 def gen_label(labels):

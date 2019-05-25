@@ -64,6 +64,7 @@ def select_train(table="rebuild"):
         relabel = [int(x) for x in row[1]]
         results.append([text,relabel])
     #print(results)
+    print(len(results))
     conn.commit()
     conn.close()
     return results
@@ -72,9 +73,14 @@ def update_train(table="rebuild"):
     conn = sqlite3.connect('test.db')
     c = conn.cursor()
     print("Opened database successfully")
-    cursor = c.execute("SELECT text, flag from rebuild where flag = '1' ")    
+    cursor = c.execute("SELECT id, flag from rebuild where flag = '1' ")   
+    list_row = []
     for row in cursor:
-        c.execute("UPDATE results set flag = '1' where ID='{0}'".format(row[4]))
+        print(row)
+        list_row.append(row[0])
+    for i in list_row:
+        print(i)
+        c.execute("UPDATE rebuild set flag = '0' where ID='{0}'".format(i))
     conn.commit()
     conn.close()
 
