@@ -1,0 +1,68 @@
+body {
+  background-color: #666;
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/14104/stardust.png);
+  background-blend-mode: hard-light;
+  font-size: 10pt;
+}
+
+a {
+  color: #00b6e3;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+#header {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  background: #00b6e3;
+  display: table;
+}
+#header h1 {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 30pt;
+  color: #fff;
+  font-weight: 800;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#navigation {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  background: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  line-height: 50px;
+}
+#navigation ul {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+#navigation ul li a {
+  height: inherit;
+  padding: 0 25px;
+  display: inline-block;
+  transition: all 150ms ease;
+  line-height: inherit;
+  text-transform: uppercase;
+}
+#navigation ul li a:hover {
+  background: #00b6e3;
+  color: #fff;
+}
+#navigation.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+#container {
+  min-height: 300%;
+}

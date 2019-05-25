@@ -14,21 +14,23 @@ import keras
 import jieba
 import tensorflow as tf
 import sql
-
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 #%%
 # load model
-model_w2v = Word2Vec.load("data/nlpcc2018/nlpcc2018.w2v")
+model_w2v = Word2Vec.load("model/nlpcc2018.w2v")
 graph = tf.get_default_graph()
 global graph
 
 global model_encode
 global model_bi
 global model_re
-model_encode = keras.models.load_model("data/nlpcc2018/encode.model")
+model_encode = keras.models.load_model("model/encode.model")
 model_bi = []
 for i in range(5):
-    model_bi.append(keras.models.load_model("data/nlpcc2018/bi/2018_bi_"+str(i+1)+".model"))
-model_re = keras.models.load_model("data/nlpcc2018/2018_2.model")    
+    model_bi.append(keras.models.load_model("model/bi_"+str(i+1)+".model"))
+model_re = keras.models.load_model("model/re.model")    
 
 #%%
 
@@ -117,4 +119,4 @@ def gen_label(labels):
         label_array[i] = int(''.join([str(x) for x in labels[i]]),2)
     return to_categorical(label_array,int(pow(2,num_types)))
     
-retrain(10)
+#retrain(10)

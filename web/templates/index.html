@@ -9,15 +9,37 @@
 		<meta name="keywords" content="web design, inspiration, search, ui, effect, javascript, animation" />
 		<meta name="author" content="Codrops" />
 		<link rel="shortcut icon" href="favicon.ico">
-		<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+
 		<link rel="stylesheet" type="text/css" href="static/css/demo.css" />
 		<link rel="stylesheet" type="text/css" href="static/css/style2.css" />
 		<link rel="stylesheet" href="static/css/area_style.css">
+		
+		<link rel="stylesheet" href="static/css/nav.css">
+		<link rel="stylesheet" href="static/css/reset.min.css">
+
 		<!--[if IE]>
   		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]--><script>document.documentElement.className = 'js';</script>
 	</head>
 	<body class="demo-2">
+
+  <nav id="navigation">
+    <ul>
+      <li><a href="home">Home</a></li>
+      <li><a href="#">Info</a></li>
+			<li><a href="history">History</a></li>
+			<li><a href="feedback">feedback</a></li>
+			<!--
+			<li>
+			<form>
+      <li><a href="#">feedback</a></li>
+			<li><input id="feedback" placeholder="标签"></li>
+			<li><button> feedback</li>
+			</form>
+			</li>
+		-->
+    </ul>
+  </nav>
 		<svg class="hidden">
 			<defs>
 				<symbol id="icon-arrow" viewBox="0 0 24 24">
@@ -46,7 +68,7 @@
 					<button class="btn btn--search"><svg class="icon icon--search"><use xlink:href="#icon-search"></use></svg></button>
 				</form>
 				<div class="search__suggestion">
-					<h3>May We Suggest?</h3>
+					<h3>Not satisfied? feedback your mind.</h3>
 					<p>please enter your sentences to analyse</p>
 				</div>
 			</div><!-- /search -->

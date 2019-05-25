@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Custom checkbox with icon font</title>
+  <link rel="stylesheet" href="static/css/nav.css">
+  <link rel="stylesheet" href="static/css/reset.min.css">
+  <link rel="stylesheet" href="static/css/checkbox.css">
+
+</head>
+
+<body>
+		<nav id="navigation">
+				<ul>
+				  <li><a href="home">Home</a></li>
+				  <li><a href="#">Info</a></li>
+				  <li><a href="history">History</a></li>
+				  <li><a href="retrain">retrain</a></li>
+				</ul>
+			  </nav>
+  <div class="container clearfix">
+	<h1><div id="text"></div></h1>
+	<div class="half-col">
+				<header>labels</header>
+				<form method="POST" action="" id="label_form">
+						<ul id="ul_form">
+								<li>
+										<label>
+												<input type="checkbox" checked disabled/>
+												<span class="lbl padding-8">喜悦</span>
+										</label>
+								</li>
+								<li>
+										<label>
+												<input type="checkbox" checked disabled/>
+												<span class="lbl padding-8">悲伤</span>
+										</label>
+								</li>
+								<li>
+										<label>
+												<input type="checkbox" checked disabled/>
+												<span class="lbl padding-8">愤怒</span>
+										</label>
+								</li>
+								<li>
+										<label>
+												<input type="checkbox" checked disabled />
+												<span class="lbl padding-8">害怕</span>
+										</label>
+								</li>
+								<li>
+										<label>
+												<input type="checkbox" checked disabled  />
+												<span class="lbl padding-8">惊讶</span>
+										</label>
+								</li>
+						</ul>
+
+				</form>
+		</div>
+
+		<div class="half-col last">
+				<header>relabels</header>
+				<form method="POST" action="/relabel" id="relabel_form">
+						<ul>
+								<li>
+										<label>
+												<input type="checkbox" value = "0" name="relabels" />
+												<span class="lbl padding-8"><img src='static/img/happy.png' height='40' width='40'></span>
+										</label>
+								</li>
+								<li>
+										<label>
+												<input type="checkbox" value = "1" name="relabels"/>
+												<span class="lbl padding-8"><img src='static/img/sad.png' height='40' width='40'></span>
+										</label>
+								</li>
+								<li>
+										<label>
+												<input type="checkbox" value = "2" name="relabels"/>
+												<span class="lbl padding-8"><img src='static/img/angry.png' height='40' width='40'></span>
+										</label>
+								</li>
+								<li>
+										<label>
+												<input type="checkbox" value = "3" name="relabels"/>
+												<span class="lbl padding-8"><img src='static/img/fear.png' height='40' width='40'></span>
+										</label>
+								</li>
+								<li>
+										<label>
+												<input type="checkbox" value = "4" name="relabels"/>
+												<span class="lbl padding-8"><img src='static/img/surprise.png' height='40' width='40'></span>
+										</label>
+								</li>
+						</ul>
+				<button>submit</button>
+				</form>
+		</div>
+</div>
+  
+<script src="static/js/feedback.js"></script>
+<script type="text/javascript">
+	window.onload = dynamic_checkbox({{ variable|tojson }});
+	</script>
+</body>
+
+</html>

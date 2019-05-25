@@ -4,6 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <title>A Better Fluid Responsive Table</title>
+
+  <link rel="stylesheet" href="static/css/nav.css">
+  <link rel="stylesheet" href="static/css/reset.min.css">
+
       <style>
       /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
       table#miyazaki { 
@@ -59,6 +63,15 @@ table#miyazaki tbody tr:not(:last-child) {
 </head>
 
 <body>
+  <nav id="navigation">
+    <ul>
+      <li><a href="home">Home</a></li>
+      <li><a href="#">Info</a></li>
+      <li><a href="#">History</a></li>
+      <li><a href="retrain">retrain</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
 
 <table id="miyazaki">
 <caption> Senitiment classfication history</caption>
@@ -75,6 +88,7 @@ table#miyazaki tbody tr:not(:last-child) {
   window.onload = dynamic_db({{ results_db|tojson }});
   </script>
 
+<script  src="static/js/nav.js"></script>
 </body>
 
 </html>

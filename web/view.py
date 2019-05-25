@@ -39,12 +39,47 @@ def query():
 @app.route('/history',methods=['GET','POST'])
 def history():
     results_db = sql.select()
-    #results_db = json.dumps(results_db)
-    print(results_db)
+    #print(results_db)
     return render_template('table.html', results_db = results_db)    
+
+@app.route('/retrain',methods=['GET','POST'])
+def retrain():
+    try:
+        model.retrain(10)
+    except:
+        print("no need to update")
+    results_db = sql.select()
+    return render_template('table.html',results_db = results_db)    
+
+@app.route('/feedback',methods=['GET'])
+def feedback():
+    item = sql.last_one()
+    dic = {'id':item[0],'text':item[1],'label':[int(x) for x in item[2]],'relabel':[int(x) for x in item[3]],'flag':item[4]}
+    print(dic)    
+    return render_template('feedback.html',variable = dic)    
+
+@app.route('/relabel',methods=['POST'])
+def relabel():
+    print(request.values.getlist('relabels'))
+    relabels = [0,0,0,0,0]
+    for i in request.values.getlist('relabels'):
+        relabels[int(i)] = 1
+    sql.update_label(relabels)
+    print("relabels",relabels)
+    return render_template('index.html', variable = variable)          
+
+# api
+@app.route('/query_api',methods=['POST'])
+def query_api():
+    text = request.values['text']
+    classify(text)
+    row = sql.last_one()
+    result = {}
+    result['text'] = text
+    result['label'] = row[2]
+    return json.dumps(result)
     
-    
-def classify(search_sentence=u'等待'):
+def classify(search_sentence=u'未知词语'):
     f = open('static/list.json','w')
     #result = analyse(search_sentence)
     try:
@@ -62,7 +97,7 @@ def classify(search_sentence=u'等待'):
     label = ''.join(result)
     relabel = label
     sql.insert(search_sentence,label,relabel)
-    return     
+    return
     
 
 
